@@ -30,7 +30,7 @@ function Home({name,setName}) {
         <span style={{fontSize:30,marginTop:60}}>It's just a Preset down there.</span>
           {/* TODO: banner image */}
           <div className='settings__select'>
-          {error && <div style={{padding:"14px 5px",textAlign:"center",marginBottom:20,borderRadius:"6px",backgroundColor:"#d11b2a",display:"inline-block",color:"white",boxShadow:"2px 3px 9px #483f3f"}}>fill the data</div>}
+          {error && <div style={{padding:"14px 5px",textAlign:"center",marginBottom:20,borderRadius:"6px",backgroundColor:"#d11b2a",display:"inline-block",color:"white",boxShadow:"2px 3px 9px #483f3f"}}>Fill All The Fields.</div>}
             <TextField 
               style={{marginBottom:25}} 
               label="What shall we call you? Captain Code? Sir Hack-a-Lot? You decide!" 
