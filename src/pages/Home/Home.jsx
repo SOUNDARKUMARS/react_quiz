@@ -4,21 +4,26 @@ import { useNavigate } from 'react-router-dom';
 import { toast,Toaster } from 'react-hot-toast';
 
 import './Home.css'
-import Categories, {} from '../../Data/Categories'
+import Categories from '../../Data/Categories'
 
-function Home({name,setName}) {
+
+function Home({name,setName,fetchQuestion}) {
   
   const [category,setCategory] =useState("")
   const [difficulty,setDifficulty] =useState("")
-  const [error,setError] =useState(false)
+
 
   const navigate=useNavigate()
   const handleSubmit=()=>{
-    if(!category ||!difficulty || !name ){
-      setError(true)
-      return
+    if (!category || !difficulty || !name) {      
+      toast('Fill out all the data first',{
+        style:{
+          color:'white',fontWeight:'bold',fontSize:"20px", padding:"10px 6px",backgroundColor:"#f92f60",border:"1px solid red"
+        }
+      });  
+      return;
     }else{
-      setError(false)
+      fetchQuestion(category,difficulty)
       navigate('/quiz')
     }
   }
@@ -30,7 +35,6 @@ function Home({name,setName}) {
         <span style={{fontSize:30,marginTop:60}}>It's just a Preset down there.</span>
           {/* TODO: banner image */}
           <div className='settings__select'>
-          {error && <div style={{padding:"14px 5px",textAlign:"center",marginBottom:20,borderRadius:"6px",backgroundColor:"#d11b2a",display:"inline-block",color:"white",boxShadow:"2px 3px 9px #483f3f"}}>Fill All The Fields.</div>}
             <TextField 
               style={{marginBottom:25}} 
               label="What shall we call you? Captain Code? Sir Hack-a-Lot? You decide!" 
@@ -68,6 +72,7 @@ function Home({name,setName}) {
           </div>
          
           </div>
+          <Toaster/>
       </div>
   )
 }

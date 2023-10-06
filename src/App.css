@@ -8,6 +8,6 @@ a{
 }
 .app{
   min-height: 96vh;
- background-image: url('./asstets/bg.jpg');
- background-size: cover;
+ /* background-image: url('./asstets/bg.jpg'); */
+ /* background-size: cover; */
 }
