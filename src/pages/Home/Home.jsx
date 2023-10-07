@@ -11,14 +11,19 @@ function Home({name,setName,fetchQuestion}) {
   
   const [category,setCategory] =useState("")
   const [difficulty,setDifficulty] =useState("")
-
+  
 
   const navigate=useNavigate()
   const handleSubmit=()=>{
-    if (!category || !difficulty || !name) {      
+    if (!category || !difficulty || !name) {
       toast('Fill out all the data first',{
         style:{
-          color:'white',fontWeight:'bold',fontSize:"20px", padding:"10px 6px",backgroundColor:"#f92f60",border:"1px solid red"
+          color:'white',
+          fontWeight:'bold',
+          fontSize:"20px", 
+          padding:"10px 6px",
+          backgroundColor:"#f92f60",
+          border:"1px solid red"
         }
       });  
       return;
@@ -28,7 +33,7 @@ function Home({name,setName,fetchQuestion}) {
     }
   }
 
-
+// Todo: give an option(see the ``handleNext`` function in ``Question.jsx``) to select how many questions the user wants and the type of the question
   return (
     <div className='content'>
       <div className='settings'>
@@ -37,7 +42,7 @@ function Home({name,setName,fetchQuestion}) {
           <div className='settings__select'>
             <TextField 
               style={{marginBottom:25}} 
-              label="What shall we call you? Captain Code? Sir Hack-a-Lot? You decide!" 
+              label="What shall we call you? You decide!" 
               variant="outlined"
               onChange={(e)=>setName(e.target.value)}
             >

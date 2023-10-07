@@ -11,3 +11,10 @@ a{
  /* background-image: url('./asstets/bg.jpg'); */
  /* background-size: cover; */
 }
+.loader{
+  position: absolute;
+  top: 50%;
+  right: 50%;
+  transform: translate(-50%,-50%);
+ 
+}
