@@ -1,29 +1,29 @@
-import { CircularProgress } from '@material-ui/core';
-import React, { useEffect, useState } from 'react';
+import { CircularProgress } from '@material-ui/core'
+import React, { useEffect, useState } from 'react'
 
 import './Quiz.css'
-import Question from '../../components/Question/Question';
-const Quiz = ({ name, questions, setQuestions, score, setScore }) => {
-  const [options, setOptions] = useState([]);
+import Question from '../../components/Question/Question'
+const Quiz = ({ name, questions, setQuestions, score, setScore,amount }) => {
+  const [options, setOptions] = useState([])
 
-  const [currQues, setCurrQues] = useState(0);
+  const [currQues, setCurrQues] = useState(0)
 
   useEffect(() => {
     if (questions && questions[currQues]) {
       const shuffledOptions = handleShuffle([
         questions[currQues]?.correct_answer,
         ...questions[currQues]?.incorrect_answers,
-      ]);
-      setOptions(shuffledOptions);
+      ])
+      setOptions(shuffledOptions)
     }
-  }, [questions, currQues]);
+  }, [questions, currQues])
 
   console.log(questions)
   console.log(options)
 
   const handleShuffle = (optionsArr) => {
-    return optionsArr.sort(() => Math.random() - 0.5);
-  };
+    return optionsArr.sort(() => Math.random() - 0.5)
+  }
 
   return (
     <div className='quiz'>
@@ -31,7 +31,7 @@ const Quiz = ({ name, questions, setQuestions, score, setScore }) => {
       {questions?(
       <>
         <div className='quizInfo'>
-          <span> {questions[currQues].category} </span>
+          <span> {questions[currQues]?.category} </span>
           <span>Score: {score}</span>
         </div>
         <Question
@@ -43,6 +43,7 @@ const Quiz = ({ name, questions, setQuestions, score, setScore }) => {
           score={score}//--
           setScore={setScore}
           correct={questions[currQues]?.correct_answer}
+          amount={amount}
         />
       </>
       ):(
@@ -52,7 +53,7 @@ const Quiz = ({ name, questions, setQuestions, score, setScore }) => {
         </cen>
       )}
     </div>
-  );
-};
+  )
+}
 
-export default Quiz;
+export default Quiz

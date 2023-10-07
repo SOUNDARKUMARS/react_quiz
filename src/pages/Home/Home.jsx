@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import { Button, MenuItem, TextField } from '@material-ui/core';
-import { useNavigate } from 'react-router-dom';
-import { toast,Toaster } from 'react-hot-toast';
+import { Button, MenuItem, TextField } from '@material-ui/core'
+import { useNavigate } from 'react-router-dom'
+import { toast,Toaster } from 'react-hot-toast'
 
 import './Home.css'
 import Categories from '../../Data/Categories'
@@ -11,7 +11,7 @@ function Home({name,setName,fetchQuestion}) {
   
   const [category,setCategory] =useState("")
   const [difficulty,setDifficulty] =useState("")
-  
+  const [quesCount, setQuesCount] = useState()
 
   const navigate=useNavigate()
   const handleSubmit=()=>{
@@ -28,16 +28,17 @@ function Home({name,setName,fetchQuestion}) {
       });  
       return;
     }else{
-      fetchQuestion(category,difficulty)
+      fetchQuestion(category,difficulty,quesCount)
       navigate('/quiz')
     }
   }
 
+  
 // Todo: give an option(see the ``handleNext`` function in ``Question.jsx``) to select how many questions the user wants and the type of the question
   return (
     <div className='content'>
       <div className='settings'>
-        <span style={{fontSize:30,marginTop:60}}>It's just a Preset down there.</span>
+        <span style={{fontSize:30,marginTop:50}}>It's just a Preset down there.</span>
           {/* TODO: banner image */}
           <div className='settings__select'>
             <TextField 
@@ -72,6 +73,14 @@ function Home({name,setName,fetchQuestion}) {
               <MenuItem key='medium' value='medium'>Medium salsa</MenuItem>
               <MenuItem key='hard' value='hard'>Ghost Pepper</MenuItem>
             </TextField>
+
+            <TextField 
+              style={{marginTop:40}} 
+              label="How many you can take?" 
+              variant="outlined"
+              value={quesCount}
+              onChange={(e)=>setQuesCount(e.target.value)}
+            ></TextField>
             <br /><br /><br />
             <Button onClick={handleSubmit} variant='contained' color='primary' size='large' >Begin Challenge! 🚀</Button>
           </div>
