@@ -44,7 +44,7 @@ return (
             />
           } />
 
-          <Route path='/result' element={<Result score={score} name={name} amount={amount}/>} />
+          <Route path='/result' element={<Result score={score} amount={amount}/>} />
           <Route path='*' element={<Error/>} />
         </Routes>
       </div>

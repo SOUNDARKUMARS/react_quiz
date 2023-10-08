@@ -31,10 +31,10 @@ const Question = ({
     setScore(score+1)
   }
  }
-//timer
-const [timer, setTimer] = useState(30)
+
+const [timer, setTimer] = useState(20)
   useEffect(() => { //que change useEffect
-    setTimer(30)
+    setTimer(20)
     setSelected()
   }, [currQues])
 
@@ -50,7 +50,11 @@ const [timer, setTimer] = useState(30)
   
     return () => {clearInterval(timerInterval)}
   }, [currQues,timer])
-  
+ 
+   //progres bar
+   const remainingTime = timer
+   const totalTime =20
+   const progressPercentage = ((totalTime - remainingTime) / totalTime) * 100
 
  const handleQuit=()=>{
   if(window.confirm("Are you sure you want to Quit?")){
@@ -67,7 +71,7 @@ const [timer, setTimer] = useState(30)
         fontWeight:'bold',
         fontSize:"15px", 
         padding:"8px 4px",
-        backgroundColor:"grey",
+        backgroundColor:"darkgrey",
         border:"1px solid black"
       }
     })
@@ -82,8 +86,6 @@ const [timer, setTimer] = useState(30)
   }
 }
 
-
-
  const decodeHtml=(html)=>{
   let txt = document.createElement("textarea")
   txt.innerHTML = html
@@ -91,9 +93,14 @@ const [timer, setTimer] = useState(30)
 }
   return (
     <div className='question'>
-      <h1>Question {currQues+1} </h1>
-      <p>Time left: {timer}</p>
+      
+      <h1>{`Question ${currQues+1} of ${amount}`} </h1>
+      <br />
+      <h3 style={{color:"blue"}}>Time left: {timer}s</h3>
       <div className='a_question'>
+      <div className='progBar'>
+        <div className='prog' style={{transform: `scaleX(${progressPercentage / 100})`}}></div>
+      </div>
         <h2> {decodeHtml(questions[currQues]?.question)} </h2>
         <div className='options'>
           {
@@ -110,27 +117,29 @@ const [timer, setTimer] = useState(30)
           }
         </div>
         <div className='controls'>
-          <Button 
-            variant='contained'
-            color='secondary' 
-            size='large' 
-            onClick={handleQuit}
-          >Quit</Button>
+          
           <Button
             variant='contained'
             color='secondary' 
             size='large' 
             onClick={handlePrevious}
-            >Previous</Button>
+            >«« Previous </Button>
           <Button
             variant='contained'
             color='secondary' 
             size='large' 
             onClick={handleNext}
-            >Next</Button>
+            >Next »»</Button>
           
         </div>
       </div>
+      <br /><br />
+      <Button className='quitButton'
+            variant='outlined'
+            
+            size='small' 
+            onClick={handleQuit}
+          >Quit</Button>
       <Toaster/>
     </div>
   )

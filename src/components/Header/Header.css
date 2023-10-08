@@ -1,11 +1,18 @@
 .title {
     text-transform: uppercase;
-    font-size: 4vw;
+    font-size: 35px;
+    color: black;
     margin-top: 10px;
     font-family: "Montserrat", sans-serif;
     cursor: pointer;
   }
-  
+  .title {
+    background: -webkit-linear-gradient(45deg, rgb(194, 37, 37), rgb(199, 134, 11), rgb(118, 118, 12), rgb(41, 165, 19), rgb(25, 163, 209), indigo, violet);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+
   .header {
     display: flex;
     flex-direction: column;
