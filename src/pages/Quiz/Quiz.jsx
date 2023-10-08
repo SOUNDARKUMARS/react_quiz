@@ -1,7 +1,8 @@
-import { CircularProgress } from '@material-ui/core'
+import { CircularProgress } from '@mui/material'
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
+import { scoreImg, timerImg} from '../../asstets'
 import './Quiz.css'
 import Question from '../../components/Question/Question'
 const Quiz = ({ name, questions, setQuestions, score, setScore,amount }) => {
@@ -55,15 +56,19 @@ const Quiz = ({ name, questions, setQuestions, score, setScore,amount }) => {
       <div className='progressBar'>
         <div className='progress' style={{ transform: `scaleX(${progressPercentage / 100})` }}></div>
       </div>
-      <center className='name'>Hello {name}</center>
+      <div>
+        <h1 className='name'>👋 Hi {name},</h1>
+        <p className='namep'>Great to see you!</p>
+      </div>
       {questions?(
       <>
-      
+      <span className='category'> {questions[currQues]?.category} </span>
         <div className='quizInfo'>
-          <span> {questions[currQues]?.category} </span>
-          <span>Score: {score}</span>
-          <span>Over All Time Left: <span style={{color:"blue"}}>{formattedMinutes} : {formattedSeconds} </span></span>
+          <span><img src={scoreImg} width='50px' height="50px" alt="score" />Score: {score}</span>
+          <span> <img src={timerImg} width='45px' height="45px" alt='timer' /> <span >{formattedMinutes} : {formattedSeconds} </span></span>
         </div>
+        
+        {/* sending the props from the parant i.e., App.js and from this (Quiz.jsx) */}
         <Question
           currQues={currQues}//--
           setCurrQues={setCurrQues}
@@ -77,7 +82,7 @@ const Quiz = ({ name, questions, setQuestions, score, setScore,amount }) => {
         />
       </>
       ):(
-        
+        // loading progress
         <center className='loader'>
           <CircularProgress color='inherit'  size={50} thickness={4}/>
         </center>

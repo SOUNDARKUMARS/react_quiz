@@ -1,7 +1,11 @@
+body{
+  background-color: #fcf5ed
+}
 .content {
     display: flex;
     justify-content: space-around;
     align-items: center;
+   
   }
   
   .settings {
@@ -41,4 +45,47 @@
     width: 100%;
     flex: 0.8;
     justify-content: space-evenly;
+  }
+  .inputGroup {
+    font-family: 'Segoe UI', sans-serif;
+    margin: 1em 0 1em 0;
+    max-width: 190px;
+    position: relative;
+  }
+  
+  .inputGroup input {
+    font-size: 100%;
+    padding: 1em;
+    outline: none;
+    border: 2px solid rgb(11, 5, 45);
+    background-color: transparent;
+    border-radius: 20px;
+    width: 100%;
+  }
+  
+  .inputGroup label {
+    font-size: 100%;
+    position: absolute;
+    left: 0;
+    padding: 1rem 1rem;
+    
+    margin-left: 0.5em;
+    pointer-events: none;
+    transition: all 0.3s ease;
+    color: rgb(255, 255, 255);
+    border-radius:10px;
+  }
+  
+  .inputGroup :is(input:focus, input:valid)~label {
+    transform: translateY(-50%) scale(.9);
+    margin: 0em;
+    margin-left: 1.3em;
+    padding: 0.4em;
+    background-color: rgb(11, 5, 45);
+    background-color: rgb(236, 170, 170);
+  }
+  
+  .inputGroup :is(input:focus, input:valid) {
+    border-color: rgb(150, 150, 200);
+    
   }

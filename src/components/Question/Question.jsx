@@ -3,7 +3,7 @@ import { toast,Toaster } from 'react-hot-toast'
 import { useNavigate } from 'react-router-dom'
 
 import './Question.css'
-import { Button } from '@material-ui/core'
+import { Button } from '@mui/material'
 
 
 const Question = ({
@@ -94,14 +94,15 @@ const [timer, setTimer] = useState(20)
   return (
     <div className='question'>
       
-      <h1>{`Question ${currQues+1} of ${amount}`} </h1>
+      
       <br />
-      <h3 style={{color:"blue"}}>Time left: {timer}s</h3>
+      <hp style={{color:"#663519"}}>Time left: {timer}s</hp>
       <div className='a_question'>
       <div className='progBar'>
         <div className='prog' style={{transform: `scaleX(${progressPercentage / 100})`}}></div>
+        <p className='question_nums'><span className='question_no' >{currQues+1}</span>/{amount}</p>
       </div>
-        <h2> {decodeHtml(questions[currQues]?.question)} </h2>
+        <h2 className='question_'> {decodeHtml(questions[currQues]?.question)} </h2>
         <div className='options'>
           {
             options && options.map((option)=>(

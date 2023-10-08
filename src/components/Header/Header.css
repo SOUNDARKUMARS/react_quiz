@@ -7,7 +7,8 @@
     cursor: pointer;
   }
   .title {
-    background: -webkit-linear-gradient(45deg, rgb(194, 37, 37), rgb(199, 134, 11), rgb(118, 118, 12), rgb(41, 165, 19), rgb(25, 163, 209), indigo, violet);
+    font-weight: bolder;
+    background: -webkit-linear-gradient(45deg, rgb(255, 0, 0),  rgb(219, 104, 17),rgb(255, 255, 0), rgb(59, 231, 29), rgb(25, 163, 209), rgb(126, 51, 180), rgb(211, 68, 211));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
@@ -23,5 +24,5 @@
     margin: 10px;
     font-weight: bolder;
     width: 100%;
-    background-color: grey;
+    background-color: #777a92;
   }

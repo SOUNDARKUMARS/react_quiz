@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Button, MenuItem, TextField } from '@material-ui/core'
+import { Button, MenuItem, TextField } from '@mui/material'
 import { useNavigate } from 'react-router-dom'
 import { toast,Toaster } from 'react-hot-toast'
 
@@ -18,12 +18,11 @@ function Home({name,setName,fetchQuestion}) {
     if (!category || !difficulty || !name) {
       toast('Fill out all the data first',{
         style:{
-          color:'white',
-          fontWeight:'bold',
+          color:'red',
           fontSize:"20px", 
           padding:"10px 6px",
-          backgroundColor:"#f92f60",
-          border:"1px solid red"
+          backgroundColor:"rgb(236, 170, 170)",
+          border:"3px solid #d92b4b"
         }
       });  
       return;
@@ -32,23 +31,24 @@ function Home({name,setName,fetchQuestion}) {
       navigate('/quiz')
     }
   }
-
   
-// Todo: give an option(see the ``handleNext`` function in ``Question.jsx``) to select how many questions the user wants and the type of the question
   return (
     <div className='content'>
       <div className='settings'>
-        <span style={{fontSize:30,marginTop:50}}>It's just a Preset down there.</span>
-          {/* TODO: banner image */}
-          <div className='settings__select'>
+        <span style={{fontSize:30,width:"100%",fontWeight:"bold",margin:"10px 0",color:'#4b3620'}}>Unleash your inner quizmaster - where curiosity meets fun! 🚀😄</span>
+         
+          <div className='settings__select'>       
+
             <TextField 
               style={{marginBottom:25}} 
               label="What shall we call you? You decide!" 
               variant="outlined"
               onChange={(e)=>setName(e.target.value)}
-            >
+              >
 
             </TextField>
+
+            
             <TextField
               select
               label="Choose your vibe"
@@ -65,7 +65,7 @@ function Home({name,setName,fetchQuestion}) {
               
               select
               label="How challenging do you want it?"
-              variant='outlined' style={{marginTop:25}}
+               style={{marginTop:25}}
               value={difficulty}
               onChange={(e)=>setDifficulty(e.target.value)}
             >
