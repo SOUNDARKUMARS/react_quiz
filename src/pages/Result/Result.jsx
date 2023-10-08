@@ -2,13 +2,16 @@ import { Button } from '@mui/material'
 import React from 'react'
 
 import './Result.css'
-import Winner from '../../asstets/gold-cup.png'
-import Great from '../../asstets/OIG (1).jpeg'
-import GoodLuck from '../../asstets/good-luck.png'
-import Practice from '../../asstets/OIG.png'
+import Winner from '../../assets/gold-cup.png'
+import Great from '../../assets/great-removebg-preview.png'
+import GoodLuck from '../../assets/good-luck.png'
+import Practice from '../../assets/OIG.png'
 
 const Result = ({score,amount}) => {
+  // calculate the percetage, 
+  // greeting will be switched based on the percentage.
   const percent=(score/amount)*100
+  // message and image is set to empty at first and then it will be selected respectively
   let message=''
   let image
   switch (true) {
